@@ -14,14 +14,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.content.Intent;
-/*/
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.view.WindowManager;
-/*/
 
 public class MainActivity extends AppCompatActivity {
     private WebView mywebView;
@@ -42,28 +40,6 @@ public class MainActivity extends AppCompatActivity {
         PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Radio Garden");
         wakeLock.acquire();
 
-        /*/
-
-    //Notification
-
-        intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 01, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-        builder.setContentTitle("Radio Garden");
-        builder.setContentIntent(pendingIntent);
-        builder.setTicker("Radio Garden");
-        builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setLargeIcon(BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.mipmap.ic_launcher));
-        builder.setOngoing(true);
-        builder.setAutoCancel(true);
-        builder.setPriority(Notification.PRIORITY_DEFAULT);
-        Notification notification = builder.build();
-        NotificationManager notificationManger =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManger.notify(01, notification);
-
-/*/
 
     //DOZE Whitelisting
 
@@ -77,7 +53,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
-
+        else {
+            //Notification
+            intent = new Intent(this, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 01, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            Notification.Builder builder = new Notification.Builder(getApplicationContext());
+            builder.setContentTitle("Radio Garden");
+            builder.setContentIntent(pendingIntent);
+            builder.setTicker("Radio Garden");
+            builder.setSmallIcon(R.mipmap.ic_launcher);
+            builder.setLargeIcon(BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                    R.mipmap.ic_launcher));
+            builder.setOngoing(true);
+            builder.setAutoCancel(true);
+            builder.setPriority(Notification.PRIORITY_DEFAULT);
+            Notification notification = builder.build();
+            NotificationManager notificationManger =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManger.notify(01, notification);
+        }
 
     //Location
 
