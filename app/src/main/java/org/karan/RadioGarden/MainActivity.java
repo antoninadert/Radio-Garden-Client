@@ -34,15 +34,14 @@ public class MainActivity extends AppCompatActivity {
         mywebView.loadUrl("http://radio.garden/live");
         mywebView.setWebViewClient(new WebViewClient());
 
-     //WEBView
+     //WebView
 
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
         PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Radio Garden");
-        wakeLock.acquire();
-
 
     //DOZE Whitelisting
 
+        wakeLock.acquire();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             intent = new Intent();
             String packageName = getPackageName();
