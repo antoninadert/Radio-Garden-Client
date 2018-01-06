@@ -1,8 +1,4 @@
-# Radio Garden Android Client 🌏
+# Radio Garden Android Client 🌏 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 A Free and Open Source Radio Garden WebView client for Android.
-## [Download](https://github.com/kvsjxd/Radio-Garden-Client/releases/download/0.2/Radio.Garden.apk)
-### Requires Android 5.1 and up! Works best on Android 6.0 and up.
 
-#### Note: Please allow to ignore battery optimization if asked as it will allow the app to play music in the background without notification.
-
-Have some ideas, improvements or perhaps bug fixes? Feel free to Fork and Pull Request.
+Update: Since Jonathan Puckey/ Studio Puckey does not want people to create unofficial Radio Garden Clients, this project will no longer be maintained. Thanks for your support!
