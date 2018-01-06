@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    tools:context="org.karan.RadioGarden.MainActivity">
+    android:orientation="vertical"
+    android:hardwareAccelerated="true"
+    tools:context="org.dynamicsoft.radiogarden.com.jonathanpuckey.radiogarden.MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_x="164dp"
+        android:layout_y="246dp"
+        android:textSize="50dp"
+        android:paddingTop="230dp"
+        android:text="Please wait..." />
 
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+    </WebView>
 
 </RelativeLayout>
