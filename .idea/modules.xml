@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Fast-Radio-Garden-Client.iml" filepath="$PROJECT_DIR$/Fast-Radio-Garden-Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/Radio-Garden-Client.iml" filepath="$PROJECT_DIR$/Radio-Garden-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Radio-Garden-Client-app.iml" filepath="$PROJECT_DIR$/app/Radio-Garden-Client-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

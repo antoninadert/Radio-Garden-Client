@@ -22,17 +22,18 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
-*****************************************************************************************************/
+ *****************************************************************************************************/
 
 package org.dynamicsoft.radiogarden;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 /**
- * Created by karan on 06/06/18.
+ * Created by Shouko on 06/06/18.
  */
 
 public class BackgroundService extends Service {

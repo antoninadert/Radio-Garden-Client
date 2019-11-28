@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:hardwareAccelerated="true"
     android:keepScreenOn="true"
     android:orientation="vertical"
-    android:hardwareAccelerated="true"
-    tools:context="org.dynamicsoft.radiogarden.com.jonathanpuckey.radiogarden.MainActivity">
+    tools:context="org.dynamicsoft.radiogarden.MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -14,14 +14,13 @@
         android:layout_height="match_parent"
         android:layout_x="164dp"
         android:layout_y="246dp"
-        android:textSize="50dp"
         android:paddingTop="230dp"
-        android:text="Please wait..." />
+        android:text="Please wait..."
+        android:textSize="50dp" />
 
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </WebView>
+        android:layout_height="match_parent"></WebView>
 
 </RelativeLayout>

@@ -22,27 +22,31 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
-**************************************************************************************/
+ **************************************************************************************/
 
 package org.dynamicsoft.radiogarden;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
-import android.os.PowerManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
     public WebView mywebView;
-    public boolean internetIsUp=false;
+    public boolean internetIsUp = false;
+
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,28 +55,29 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, BackgroundService.class));
 
         // get Connectivity Manager object to check connection
-        ConnectivityManager connec = (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+        getBaseContext();
+        ConnectivityManager connec = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         // Check for network connections
-        if ( connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
+        assert connec != null;
+        if (connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
                 connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
                 connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
-                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED) {
             // if connected with internet
-            internetIsUp=true;
+            internetIsUp = true;
 
         } else if (
                 connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
-                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
-            internetIsUp=false;
+                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED) {
+            internetIsUp = false;
         }
 
-        mywebView = (WebView) findViewById(R.id.webview);   //WebView
-        WebSettings webSettings= mywebView.getSettings();
+        mywebView = findViewById(R.id.webview);   //WebView
+        WebSettings webSettings = mywebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        if(internetIsUp==true){
-            mywebView.loadUrl("http://radio.garden/live/");
-        }
-        else{
+        if (internetIsUp) {
+            mywebView.loadUrl("https://radio.garden/live/");
+        } else {
             mywebView.loadUrl("file:///android_asset/disconnected.html");
         }
 
@@ -93,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
         mywebView.setBackgroundColor(Color.TRANSPARENT);
         mywebView.setWebViewClient(new WebViewClient());
         PowerManager powerManager = (PowerManager) getSystemService(POWER_SERVICE);
-        PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Radio Garden");
+        assert powerManager != null;
+        @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Radio Garden");
         wakeLock.acquire();
     }
 }
